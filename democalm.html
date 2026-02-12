@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIVRATRI | LOCK YOUR SUCCESS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root { --neon: #00e5ff; --gold: #ffd700; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Video Background Styling */
+        #bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translateX(-50%) translateY(-50%);
+            opacity: 0.6; /* ಡಿವೈನ್ ಎಫೆಕ್ಟ್ ಗಾಗಿ */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.8) 100%);
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Divine Text Transitions */
+        .divine-title {
+            font-family: 'Cinzel', serif;
+            font-size: 55px;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            margin-bottom: 20px;
+            opacity: 0;
+        }
+
+        .motivation-text {
+            font-size: 24px;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #e0e0e0;
+            opacity: 0;
+        }
+
+        /* Lock Price Card */
+        .lock-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 2px solid var(--gold);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .price-label { font-size: 18px; letter-spacing: 2px; color: var(--neon); }
+        .lock-price { font-family: 'Orbitron', sans-serif; font-size: 60px; display: block; margin: 10px 0; }
+
+        .secure-btn {
+            background: var(--gold);
+            color: #000;
+            padding: 20px 60px;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 30px var(--gold);
+            transition: 0.4s;
+            margin-top: 20px;
+        }
+
+        .secure-btn:hover {
+            transform: scale(1.1);
+            background: #fff;
+            box-shadow: 0 0 50px #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="WhatsApp Video 2026-02-11 at 4.36.43 PM.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="content">
+        <h1 class="divine-title" id="title">NIMMA GURI, NAMMA SHAKTI</h1>
+        <p class="motivation-text" id="motive">
+            "Ee payana nimma badukina hosa adhyaya. Guri kadege hejje idi, yashassu nimmadagide. 
+            Offer mugiyokintha munche nimma seat confirm maadi, shikharavannu heri."
+        </p>
+
+        <div class="lock-card" id="card">
+            <span class="price-label">CONFIRM YOUR ENROLLMENT</span>
+            <span class="lock-price">₹5,000/-</span>
+            <p style="font-size: 12px; margin-bottom: 20px;">*Balance to be paid later to lock the full offer price.</p>
+            <button class="secure-btn" onclick="alert('Proceeding to Secure Gateway...')">LOCK THIS PRICE NOW</button>
+        </div>
+    </div>
+
+    <script>
+        // GSAP Animations for Smooth Transitions
+        window.onload = () => {
+            const tl = gsap.timeline();
+
+            tl.to("#title", { opacity: 1, duration: 1.5, ease: "power2.out" })
+              .to("#motive", { opacity: 1, duration: 1.5, ease: "power2.out" }, "-=0.5")
+              .to("#card", { opacity: 1, y: 0, duration: 1, ease: "back.out(1.7)" }, "-=0.5");
+        };
+    </script>
+
+</body>
+</html>

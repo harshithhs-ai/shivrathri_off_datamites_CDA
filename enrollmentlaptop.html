@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIVRATRI | THE DIVINE JOURNEY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root { --gold: #ffd700; --neon: #00e5ff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: 'Inter', sans-serif; overflow: hidden; height: 100vh; }
+
+        /* Video Viewport - Fixed to show Shiva correctly */
+        #video-viewport {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;F
+            z-index: -2;
+            overflow: hidden;
+            background: #000;
+        }
+
+        #bg-video {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: contain; 
+            object-position: right center; 
+            opacity: 0.6;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 30%, transparent 70%, rgba(0,0,0,0.4) 100%);
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; 
+            height: 100vh;
+            text-align: left;
+            padding: 0 8%;
+        }
+
+        .heading {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(30px, 4.5vw, 65px);
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            margin-bottom: 15px;
+            opacity: 0;
+            text-transform: uppercase;
+        }
+
+        .motive {
+            font-size: clamp(16px, 1.2vw, 22px);
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #efefef;
+            opacity: 0;
+        }
+
+        .premium-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 40px 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .price-tag { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: clamp(40px, 4vw, 70px); 
+            display: block; 
+            margin: 5px 0; 
+            color: #fff;
+        }
+
+        .lock-btn {
+            background: linear-gradient(135deg, var(--gold), #ccac00);
+            color: #000;
+            padding: 18px 60px;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            transition: 0.4s;
+        }
+
+        .lock-btn:hover { transform: scale(1.05); background: #fff; }
+    </style>
+</head>
+<body>
+
+    <div id="video-viewport">
+        <video autoplay muted loop playsinline id="bg-video">	
+            <source src="shivabg.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="overlay"></div>
+
+    <div class="content">
+        <h1 class="heading">Your Goal<br>checkpost</h1>
+        <p class="motive">
+            "Your destiny is calling. Secure your path to mastery before the cosmic clock stops. The summit of Data Analyst awaits.
+SHH!!! Time wont do partiality for everybody time runs in same , it wont follow we follow "
+        </p>
+
+        <div class="premium-card">
+            <p style="color: var(--neon); letter-spacing: 3px; font-size: 11px;">CONFIRM ENROLLMENT</p>
+            <span class="price-tag">₹5,000/-</span>
+            <button class="lock-btn" onclick="window.location.href='https://pages.razorpay.com/pl_L7Xd7FfmGqBdDk/view'">LOCK THIS PRICE</button>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline();
+            tl.to(".heading", { opacity: 1, duration: 1.5, y: 0, ease: "power4.out" })
+              .to(".motive", { opacity: 1, duration: 1.2 }, "-=0.8")
+              .to(".premium-card", { opacity: 1, y: 0, duration: 1, ease: "expo.out" }, "-=0.5");
+        });
+    </script>
+</body>
+</html>

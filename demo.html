@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maha Shivratri Special Offer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #000; /* Deep Black Background */
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            overflow-y: auto; /* ಇದು ಸ್ಕ್ರೋಲಿಂಗ್ ಎನೇಬಲ್ ಮಾಡುತ್ತೆ */
+        }
+
+        /* Background Particle Effect */
+        .stars-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%);
+            z-index: -1;
+            opacity: 0.9;
+        }
+
+        .container {
+            padding: 40px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .header-section {
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #4fd1c5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #00d2ff;
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* Offer Card with Glass Effect */
+        .offer-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .offer-headline {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        .offer-headline span {
+            color: #4fd1c5;
+        }
+
+        /* Features List */
+        .features {
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border-left: 4px solid #4fd1c5;
+        }
+
+        .feature-item span {
+            margin-left: 10px;
+        }
+
+        /* Sticky Button */
+        .btn-container {
+            position: sticky;
+            bottom: 20px;
+            padding: 10px 0;
+            background: linear-gradient(transparent, #000);
+            z-index: 10;
+        }
+
+        .reveal-btn {
+            background: #4fd1c5; /* Highlighted color */
+            color: #000;
+            width: 100%;
+            padding: 20px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(79, 209, 197, 0.7);
+            animation: pulse-reveal 2s infinite ease-in-out;
+            transition: 0.3s;
+        }
+
+        @keyframes pulse-reveal {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(79, 209, 197, 0.5); }
+            50% { transform: scale(1.03); box-shadow: 0 0 40px rgba(79, 209, 197, 0.9); }
+            100% { transform: scale(1); box-shadow: 0 0 20px rgba(79, 209, 197, 0.5); }
+        }
+
+        .cta-text {
+            font-size: 13px;
+            color: #ccc;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars-bg"></div>
+
+    <div class="container">
+        <div class="header-section">
+            <h1 class="title">MAHA SHIVRATRI SPECIAL</h1>
+            <p class="subtitle">DATA SCIENTIST COURSE (08 MONTHS)</p>
+        </div>
+
+        <div class="offer-card">
+            <h2 class="offer-headline">Unlock Your <span>Career Potential</span> with this Exclusive Offer!</h2>
+            
+            <div class="features">
+                <div class="feature-item">💎 <span>Comprehensive Study Materials</span></div>
+                <div class="feature-item">🎓 <span>Expert-Led Live Training</span></div>
+                <div class="feature-item">📑 <span>IABAC Exam Fees Included</span></div>
+                <div class="feature-item">📜 <span>4 Industry-Recognized Certificates</span></div>
+                <div class="feature-item">🏢 <span>Guaranteed Internship in Rubixe (AI Company)</span></div>
+                <div class="feature-item">📂 <span>Build Stunning Project Portfolios</span></div>
+                <div class="feature-item">🚀 <span>Dedicated Placement Assistance</span></div>
+            </div>
+
+            <p class="cta-text">Click the button below to reveal your special Shivratri pricing!</p>
+        </div>
+
+        <div class="btn-container">
+            <button class="reveal-btn" onclick="revealPrice()">Reveal My Shivratri Price!</button>
+        </div>
+    </div>
+
+    <script>
+        function revealPrice() {
+            // ಇದು ಮುಂದಿನ finaloffer.html ಪುಟಕ್ಕೆ ಹೋಗುತ್ತದೆ
+            window.location.href = "finaloffer.html";
+        }
+    </script>
+</body>
+</html>

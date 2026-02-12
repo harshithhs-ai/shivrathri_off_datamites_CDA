@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATAMITES | AI_CORE START</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root { --shiva-blue: #00d2ff; --rudra-orange: #ff4d00; --bg: #020205; }
+        body { margin: 0; background: var(--bg); font-family: 'Segoe UI', sans-serif; color: white; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        
+        /* Loading Overlay */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 2, 5, 0.9);
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 1000;
+        }
+        .spinner {
+            width: 50px; height: 50px;
+            border: 3px solid rgba(0, 210, 255, 0.1);
+            border-top: 3px solid var(--shiva-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .glass-box { background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 77, 0, 0.2); backdrop-filter: blur(15px); text-align: center; width: 90%; max-width: 400px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); position: relative; }
+        
+        h1 { font-weight: 300; letter-spacing: 1px; margin-bottom: 30px; }
+        .brand { font-size: 10px; color: var(--shiva-blue); letter-spacing: 5px; font-weight: bold; margin-bottom: 10px; display: block; }
+        
+        input { width: 100%; padding: 15px; margin-bottom: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(0, 210, 255, 0.2); border-radius: 8px; color: white; box-sizing: border-box; font-size: 16px; outline: none; }
+        input:focus { border-color: var(--rudra-orange); background: rgba(255, 77, 0, 0.05); }
+        
+        .cta-btn { width: 100%; padding: 16px; background: var(--rudra-orange); border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; letter-spacing: 2px; transition: 0.3s; text-transform: uppercase; }
+        .cta-btn:hover { background: white; color: var(--rudra-orange); box-shadow: 0 0 20px var(--rudra-orange); transform: scale(1.02); }
+
+        #device-selection { display: none; }
+        .node-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
+        .node { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 25px 10px; border-radius: 12px; cursor: pointer; transition: 0.3s; text-align: center; }
+        .node:hover { border-color: var(--shiva-blue); background: rgba(0, 210, 255, 0.1); transform: translateY(-5px); }
+        .node span { font-size: 12px; letter-spacing: 1px; color: #aaa; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div id="loader">
+    <div class="spinner"></div>
+    <p style="margin-top: 15px; font-size: 12px; letter-spacing: 2px; color: var(--shiva-blue);">ENTERING_YOU_IN...</p>
+</div>
+
+<div class="glass-box" id="auth-form">
+    <span class="brand">DATAMITES</span>
+    <h1>Welcome,Check Shivarathi offer valid upto 15thFeb</h1>
+    <input type="text" id="userName" placeholder="ENTER YOUR NAME">
+    <input type="tel" id="userMobile" placeholder="MOBILE NUMBER">
+    <button class="cta-btn" onclick="initializeSystem()">ACCESS SYSTEM</button>
+</div>
+
+<div class="glass-box" id="device-selection">
+    <span class="brand">FOR BETTER PERFORMANCE PLS CHOOSE</span>
+    <h2 style="font-weight: 300;">Hello,<span id="display-name" style="color:var(--shiva-blue)"></span></h2>
+    <p style="font-size: 13px; color: #888;">Select your hardware interface</p>
+    <div class="node-grid">
+    <div class="node" onclick="location.href='mobilescheckoffers.html'">
+        📱<br><span>MOBILE_OS</span>
+    </div>
+    
+    <div class="node" onclick="location.href='laptopvideocheckoffer.html'">
+        💻<br><span>LAPTOP_OS</span>
+    </div>
+</div>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxePw-zND7BWA0KXEI5nwqykPd8lT8hScoMxnZetc8dknL-9Pn24__2tMb2TbulHAG9uA/exec';
+
+    function showLoader(show) {
+        document.getElementById('loader').style.display = show ? 'flex' : 'none';
+    }
+
+    function initializeSystem() {
+        const name = document.getElementById('userName').value;
+        const mobile = document.getElementById('userMobile').value;
+
+        if(!name || !mobile) {
+            alert("Please identify yourself to enter.");
+            return;
+        }
+
+        showLoader(true); // ಬಟನ್ ಒತ್ತಿದ ಕೂಡಲೇ ಲೋಡರ್ ಶುರು
+
+        localStorage.setItem('leadName', name);
+        localStorage.setItem('leadMobile', mobile);
+
+        fetch(scriptURL + `?name=${encodeURIComponent(name)}&mobile=${mobile}&status=INDEX_REGISTERED`)
+        .then(() => {
+            showLoader(false); // ಡೇಟಾ ಹೋದ ಮೇಲೆ ಲೋಡರ್ ಬಂದ್
+            gsap.to("#auth-form", { opacity: 0, y: -20, duration: 0.5, onComplete: () => {
+                document.getElementById('auth-form').style.display = 'none';
+                document.getElementById('display-name').innerText = name.toUpperCase();
+                document.getElementById('device-selection').style.display = 'block';
+                gsap.from("#device-selection", { opacity: 0, y: 20, duration: 0.5 });
+            }});
+        })
+        .catch(() => showLoader(false));
+    }
+
+    function trackAndMove(device) {
+        const name = localStorage.getItem('leadName');
+        const mobile = localStorage.getItem('leadMobile');
+
+        showLoader(true); // ಪೇಜ್ ಚೇಂಜ್ ಆಗೋ ಮೊದಲು ಲೋಡರ್
+
+        fetch(scriptURL + `?name=${encodeURIComponent(name)}&mobile=${mobile}&status=DEVICE_SELECTED&device=${device}`)
+        .finally(() => {
+            // ಇಲ್ಲಿ ನಿನ್ನ mobilescheckoffers.html ಗೆ ರಿಡೈರೆಕ್ಟ್ ಆಗುತ್ತೆ
+            window.location.href = (device === 'Mobile') ? "mobilescheckoffers.html" : "checklaptop.html";
+        });
+    }
+</script>
+
+</body>
+</html>

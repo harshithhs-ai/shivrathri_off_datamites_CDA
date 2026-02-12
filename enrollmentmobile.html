@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIVRATRI | MOBILE ENROLL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root { --gold: #ffd700; --neon: #00e5ff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Video Background */
+        #video-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            background: #000;
+        }
+
+        #bg-video {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.4; 
+        }
+
+        /* Gradient Overlay */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(0,0,0,0.8) 0%, 
+                transparent 40%, 
+                rgba(0,0,0,0.9) 100%);
+            z-index: -1;
+        }
+
+        .wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            padding: 50px 25px;
+            text-align: center;
+        }
+
+        /* Fixed Overlapping Heading */
+        .heading {
+            font-family: 'Cinzel', serif;
+            font-size: 34px;
+            line-height: 1.3; 
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .motive-box {
+            opacity: 0;
+            margin: 20px 0;
+        }
+
+        .motive-text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #e0e0e0;
+            padding: 0 15px;
+        }
+
+        /* Mobile Card */
+        .mobile-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 35px 25px;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 340px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .price { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 48px; 
+            display: block; 
+            margin: 10px 0;
+            color: #fff;
+        }
+
+        .lock-btn {
+            background: linear-gradient(135deg, var(--gold), #ccac00);
+            color: #000;
+            width: 100%;
+            padding: 20px;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            border: none;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .lock-btn:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <div id="video-container">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="shivabg_mobile.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="overlay"></div>
+
+    <div class="wrapper">
+        <h1 class="heading">YOUR GOAL<br>CHECKPOST</h1>
+
+        <div class="motive-box">
+            <p class="motive-text">
+                "Enrollment is checkpost you can lock the offer price by paying 5,000 and get LMS access to prepare self phase Journey"
+            </p>
+        </div>
+
+        <div class="mobile-card">
+            <p style="color: var(--neon); letter-spacing: 2px; font-size: 11px; margin-bottom: 5px;">CONFIRM ENROLLMENT</p>
+            <span class="price">₹5,000/-</span>
+            <button class="lock-btn" onclick="window.location.href='https://pages.razorpay.com/pl_L7Xd7FfmGqBdDk/view'">LOCK THIS PRICE</button>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline();
+            tl.to(".heading", { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" })
+              .to(".motive-box", { opacity: 1, duration: 1 }, "-=0.5")
+              .to(".mobile-card", { opacity: 1, y: 0, duration: 1, ease: "back.out(1.2)" }, "-=0.6");
+        });
+    </script>
+</body>
+</html>

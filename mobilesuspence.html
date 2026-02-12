@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIVRATRI | MOBILE EXCLUSIVE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root { --neon: #00e5ff; --pink: #ff00c1; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: #000; 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden; /* ಅಕ್ಕಪಕ್ಕ ಅಲುಗಾಡದಂತೆ */
+        }
+
+        #star-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.9));
+        }
+
+        /* Sharp Glitch Header */
+        .glitch-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 38px;
+            letter-spacing: 4px;
+            position: relative;
+            text-shadow: 0 0 10px var(--neon);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Glass Container with Scrolling */
+        .scroll-container {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--neon);
+            border-radius: 25px;
+            padding: 20px;
+            width: 100%;
+            max-width: 360px;
+            backdrop-filter: blur(15px);
+            max-height: 450px; /* ಎತ್ತರ ಫಿಕ್ಸ್ ಮಾಡಲಾಗಿದೆ */
+            overflow-y: auto; /* ಸ್ಕ್ರೋಲ್ ಮಾಡಲು ಜಾಗ */
+            scrollbar-width: thin;
+            scrollbar-color: var(--neon) transparent;
+        }
+
+        .item {
+            font-size: 15px;
+            padding: 15px;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .item i { color: var(--neon); font-size: 18px; }
+
+        /* Highlighted Fees Section */
+        .fees-highlight {
+            background: rgba(255, 0, 193, 0.1);
+            border: 1px dashed var(--pink);
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* Floating Button */
+        .reveal-btn {
+            margin-top: 30px;
+            background: var(--neon);
+            color: #000;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 16px;
+            border: none;
+            box-shadow: 0 0 30px var(--neon);
+            flex-shrink: 0; /* ಬಟನ್ ಮೇಲೆ ಹೋಗದಂತೆ */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="star-canvas"></canvas>
+
+    <div class="wrapper">
+        <h1 class="glitch-title">SHIVRATRI</h1>
+        <p style="color: var(--neon); font-size: 12px; margin-bottom: 25px; letter-spacing: 3px;">DATA ANALYST MASTERY</p>
+
+        <div class="scroll-container">
+            <div class="item">🚀 6 Months Quality Training</div>
+            <div class="item">🏢 Internship at Rubixe (AI Comp)</div>
+            <div class="item">💎 Official IABAC Exam Fees incl</div>
+            <div class="item">📜 4 Professional Certificates</div>
+            <div class="item">📂 Project portfolio building</div>
+            <div class="item">🤝 100% Placement Assistance</div>
+            <div class="item">💻 Study materials(books,bags,etc)</div>
+            <div class="item">🛠️ lifetime LMS Access with 1 yr Cloud lab</div>
+            
+            <div class="fees-highlight">
+                <p style="font-size: 12px; color: var(--pink);">PROGRAM FEES</p>
+                <p style="font-size: 18px; font-weight: bold;">₹57,181 (Incl. GST)</p>
+                <p style="font-size: 10px; opacity: 0.7;">*Exclusive Discount Coming Up!</p>
+            </div>
+        </div>
+
+        <button class="reveal-btn" id="floatBtn" onclick="location.href='finaloffermobile.html'">REVEAL OFFER</button>
+        <p style="margin-top: 20px; font-size: 11px; opacity: 0.6;">click to see festival offer ↑</p>
+    </div>
+
+    <script>
+        // Space Animation (Consistently Sharp)
+        const canvas = document.getElementById('star-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        let stars = Array(250).fill().map(() => ({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, z: Math.random()*canvas.width }));
+        function draw() {
+            ctx.fillStyle = "black"; ctx.fillRect(0,0,canvas.width,canvas.height);
+            stars.forEach(s => {
+                let x = (s.x - canvas.width/2)*(canvas.width/s.z)+canvas.width/2;
+                let y = (s.y - canvas.height/2)*(canvas.width/s.z)+canvas.height/2;
+                let size = (canvas.width/s.z)*1.1;
+                ctx.fillStyle = "white"; ctx.beginPath(); ctx.arc(x,y,size,0,Math.PI*2); ctx.fill();
+                s.z -= 4; if(s.z <= 0) s.z = canvas.width;
+            });
+            requestAnimationFrame(draw);
+        }
+        draw();
+
+        // Water Floating Button Effect
+        gsap.to("#floatBtn", { y: -12, rotation: 1, duration: 2, repeat: -1, yoyo: true, ease: "power1.inOut" });
+    </script>
+</body>
+</html>

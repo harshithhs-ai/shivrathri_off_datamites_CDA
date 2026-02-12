@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINAL REVEAL | SHIVRATRI OFFER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root { --neon: #00e5ff; --pink: #ff00c1; --gold: #ffd700; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: 'Inter', sans-serif; text-align: center; }
+
+        /* Space Background */
+        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+
+        .container { 
+            padding: 30px 15px; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+        /* Reveal Heading */
+        .reveal-header {
+            font-family: 'Syncopate', sans-serif;
+            font-size: 22px;
+            color: var(--gold);
+            text-shadow: 0 0 15px var(--gold);
+            margin-bottom: 20px;
+        }
+
+        /* Price Card */
+        .price-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--neon);
+            border-radius: 30px;
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 360px;
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.2);
+        }
+
+        .old-price { font-size: 20px; text-decoration: line-through; opacity: 0.5; color: #ff4d4d; }
+        .new-price { font-family: 'Orbitron', sans-serif; font-size: 48px; display: block; color: #fff; text-shadow: 0 0 20px var(--neon); }
+
+        /* Timer Section */
+        .timer-box {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px dashed #ff4d4d;
+            border-radius: 15px;
+            background: rgba(255, 77, 77, 0.1);
+        }
+        #timer { font-family: 'Orbitron', sans-serif; font-size: 24px; color: #ff4d4d; }
+
+        /* Action Buttons */
+        .btn-stack { width: 100%; margin-top: 25px; }
+        .btn {
+            display: block; width: 100%; padding: 20px; margin-bottom: 15px;
+            border-radius: 50px; font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 900;
+            border: none; cursor: pointer; text-transform: uppercase; transition: 0.3s;
+            text-decoration: none; /* ಆಂಕರ್ ಟ್ಯಾಗ್‌ಗಾಗಿ */
+        }
+        .secure { background: var(--neon); color: #000; box-shadow: 0 0 25px var(--neon); }
+        .enroll { background: transparent; color: #fff; border: 2px solid var(--pink); box-shadow: 0 0 15px rgba(255, 0, 193, 0.2); }
+        
+        .btn:active { transform: scale(0.95); }
+
+        /* Extra Info Scroll Area */
+        .info-scroll {
+            margin-top: 20px;
+            font-size: 12px;
+            opacity: 0.7;
+            text-align: left;
+            padding: 10px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body onload="celebrate()">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="container">
+        <h1 class="reveal-header">OFFER UNLOCKED!</h1>
+        
+        <div class="price-card">
+            <span class="old-price">₹64,451/-</span>
+            <span class="new-price">₹36,099</span>
+            <p style="color: #4caf50; font-size: 12px; font-weight: bold;">(Includes all IABAC Exam Fees & GST)</p>
+            
+            <div class="timer-box">
+                <p style="font-size: 10px; color: #ff4d4d; margin-bottom: 5px;">OFFER ENDS: 15th FEB MIDNIGHT</p>
+                <div id="timer">00d 00h 00m 00s</div>
+            </div>
+
+            <div class="btn-stack">
+                <button class="btn secure" onclick="window.location.href='https://pages.razorpay.com/pl_L7Xd7FfmGqBdDk/view'">Join for batch now</button>
+                
+                <button class="btn enroll" onclick="window.location.href='enrollmentmobile.html'">Enrollment for 5K</button>
+            </div>
+
+            <div class="info-scroll">
+                <p>✅ Full Access to Data Analyst Mastery</p>
+                <p>✅ Career Guidance & Mock Interviews</p>
+                <p>✅ Immediate 6 months Internship Letter</p>
+                <p>✅ Global IABAC Certification</p>
+            </div>
+        </div>
+        
+        <p style="margin-top: 20px; font-size: 11px; opacity: 0.5;">*Refund policy as per IABAC guidelines.</p>
+    </div>
+
+    <script>s
+        // Celebration Effect
+        function celebrate() {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#00e5ff', '#ff00c1', '#ffd700'] });
+        }
+
+        // Countdown Timer
+        function updateTimer() {
+            const target = new Date("February 16, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerText = `${d}d ${h}h ${m}m ${s}s`;
+            } else {
+                document.getElementById("timer").innerText = "EXPIRED";
+            }
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Background Star Animation
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        let stars = Array(200).fill().map(() => ({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, z: Math.random()*canvas.width }));
+        function draw() {
+            ctx.fillStyle = "black"; ctx.fillRect(0,0,canvas.width,canvas.height);
+            stars.forEach(s => {
+                let x = (s.x - canvas.width/2)*(canvas.width/s.z)+canvas.width/2;
+                let y = (s.y - canvas.height/2)*(canvas.width/s.z)+canvas.height/2;
+                let size = (canvas.width/s.z)*1.2;
+                ctx.fillStyle = "white"; ctx.beginPath(); ctx.arc(x,y,size,0,Math.PI*2); ctx.fill();
+                s.z -= 4; if(s.z <= 0) s.z = canvas.width;
+            });
+            requestAnimationFrame(draw);
+        }
+        draw();
+    </script>
+</body>
+</html>

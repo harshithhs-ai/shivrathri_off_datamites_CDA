@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivratri Offers - Laptop Fix</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { 
+            height: 100%; 
+            background: #000; 
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Video Resolution Fix */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            /* Zoom ಸರಿಪಡಿಸಲು ಇಲ್ಲಿ 'contain' ಬಳಸಲಾಗಿದೆ */
+            object-fit: contain; 
+            background-color: #000;
+        }
+
+        /* Button Alignment */
+        .btn-wrapper {
+            position: absolute;
+            bottom: 10%; /* ಬಟನ್ ವೀಡಿಯೊದ ಕಂಟೆಂಟ್‌ಗೆ ಅಡ್ಡಿ ಆಗಬಾರದು */
+            z-index: 10;
+        }
+
+        .check-btn {
+            background: #fff;
+            color: #000;
+            padding: 18px 60px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+            animation: pulse-glow 2s infinite ease-in-out;
+            letter-spacing: 2px;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+            50% { transform: scale(1.05); box-shadow: 0 0 45px rgba(255, 255, 255, 1); }
+            100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+        }
+    </style>
+</head>
+<body>
+
+    <video id="bg-video" autoplay muted loop playsinline>
+        <source src="laptopvideo.mp4" type="video/mp4">
+    </video>
+
+    <div class="btn-wrapper">
+        <button class="check-btn" onclick="nextPage()">Check Offers</button>
+    </div>
+
+    <script>
+        function nextPage() {
+            window.location.href = "laptopsuspence.html";
+        }
+
+        // ಪೇಜ್ ಲೋಡ್ ಆದಾಗ ವೀಡಿಯೊ ಪ್ಲೇ ಆಗುವುದನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು
+        window.onload = function() {
+            document.getElementById('bg-video').play();
+        };
+    </script>
+</body>
+</html>

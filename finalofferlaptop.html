@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINAL OFFER | SHIVRATRI SPECIAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <style>
+        :root {
+            --neon: #00e5ff;
+            --gold: #ffd700;
+            --pink: #ff00c1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
+
+        .container { text-align: center; z-index: 10; padding: 20px; }
+
+        /* --- PRICE CARD --- */
+        .price-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            border: 2px solid var(--neon);
+            padding: 50px;
+            border-radius: 40px;
+            box-shadow: 0 0 60px rgba(0, 229, 255, 0.2);
+            margin-top: 20px;
+        }
+
+        .new-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 80px;
+            color: #fff;
+            text-shadow: 0 0 30px var(--neon);
+            display: block;
+        }
+
+        /* --- REAL-TIME TIMER STYLE --- */
+        .timer-container {
+            margin: 30px 0;
+            background: rgba(255, 77, 77, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px dashed #ff4d4d;
+        }
+
+        .timer-label {
+            color: #ff4d4d;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        #timer-display {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 35px;
+            color: #fff;
+            word-spacing: 15px;
+        }
+
+        /* --- DUAL BUTTONS --- */
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 22px 50px;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            border: none;
+            cursor: pointer;
+            transition: 0.4s;
+            text-transform: uppercase;
+        }
+
+        .secure-btn {
+            background: var(--neon);
+            color: #000;
+            box-shadow: 0 0 30px var(--neon);
+        }
+
+        .enroll-btn {
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--pink);
+            box-shadow: 0 0 20px rgba(255, 0, 193, 0.3);
+        }
+
+        .action-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 0 50px #fff;
+            background: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="container">
+        <h1 style="font-family: 'Syncopate'; font-size: 40px; margin-bottom: 10px;">OFFER REVEALED!</h1>
+        
+        <div class="price-card">
+            <span style="text-decoration: line-through; color: #888; font-size: 25px;">₹57,181/-</span>
+            <span class="new-price">₹36,099</span>
+            
+            <div class="timer-container">
+                <span class="timer-label">OFFER VALID UNTIL 15th FEB MIDNIGHT</span>
+                <div id="timer-display">00d 00h 00m 00s</div>
+            </div>
+
+            <div class="btn-group">
+    <button class="action-btn secure-btn" onclick="window.location.href='https://pages.razorpay.com/pl_L7Xd7FfmGqBdDk/view'">Secure Now</button>
+    <button class="action-btn enroll-btn" onclick="location.href='enrollmentlaptop.html'">Enrollment for 5K</button>
+    </div>
+        </div>
+    </div>
+
+    <script>
+        // --- REAL-TIME TIMER LOGIC ---
+        function updateTimer() {
+            const targetDate = new Date("February 16, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("timer-display").innerText = 
+                    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            } else {
+                document.getElementById("timer-display").innerText = "OFFER EXPIRED";
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // --- CELEBRATION EFFECT ---
+        function celebrate() {
+          window.location.href = "enrollmentlaptop.html";
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#00e5ff', '#ff00c1', '#ffffff']
+            });
+            setTimeout(() => { alert("Redirecting to Secure Payment..."); }, 500);
+        }
+
+        // --- BACKGROUND STARS ANIMATION ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let stars = Array(300).fill().map(() => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            z: Math.random() * canvas.width
+        }));
+
+        function drawSpace() {
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(s => {
+                let x = (s.x - canvas.width/2) * (canvas.width/s.z) + canvas.width/2;
+                let y = (s.y - canvas.height/2) * (canvas.width/s.z) + canvas.height/2;
+                let size = (canvas.width/s.z) * 1.5;
+                ctx.fillStyle = "white";
+                ctx.beginPath(); ctx.arc(x, y, size, 0, Math.PI*2); ctx.fill();
+                s.z -= 4;
+                if(s.z <= 0) s.z = canvas.width;
+            });
+            requestAnimationFrame(drawSpace);
+        }
+        drawSpace();
+    </script>
+</body>
+</html>

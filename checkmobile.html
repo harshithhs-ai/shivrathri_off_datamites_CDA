@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maha Shivratri Offer | Datamites</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body, html {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        /* Background Video Style */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        /* Overlay to make text readable */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .brand-name {
+            color: #00d2ff;
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 25px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input::placeholder { color: #ccc; }
+
+        .check-btn {
+            width: 100%;
+            padding: 15px;
+            background: #ff4d00; /* Rudra Orange */
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .check-btn:hover {
+            background: white;
+            color: #ff4d00;
+            box-shadow: 0 0 20px #ff4d00;
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop id="bg-video">
+        <source src="mobilescheckoffer.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="overlay">
+        <div class="form-card">
+            <div class="brand-name">DATAMITES® AI</div>
+            <h2>Unlock Your Offer</h2>
+            
+            <input type="text" id="custName" placeholder="Your Name">
+            <input type="tel" id="custMobile" placeholder="Mobile Number">
+            
+            <button class="check-btn" onclick="submitAndRedirect()">Check Offers</button>
+        </div>
+    </div>
+
+    <script>
+        function submitAndRedirect() {
+            const name = document.getElementById('custName').value;
+            const mobile = document.getElementById('custMobile').value;
+
+            if(name === "" || mobile === "") {
+                alert("Please enter your details to see the blessing!");
+                return;
+            }
+
+            // Save for personalization in the next page
+            localStorage.setItem('userName', name);
+
+            // Backend Google Sheet Tracking
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxSFlKYULLTtC1cqie50vsXlw68ZBe8NE3Z1VLkHhV59hZvgvSrCKxMUhRL2MfCOExv/exec';
+            
+            fetch(scriptURL + `?name=${encodeURIComponent(name)}&mobile=${mobile}&status=Mobile_Check_Clicked`)
+            .finally(() => {
+                // Redirect to final offer page
+                window.location.href = "finaloffer.html";
+            });
+        }
+    </script>
+
+</body>
+</html>
